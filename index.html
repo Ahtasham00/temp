@@ -1,0 +1,127 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #mathop{
+      width: 80px;
+    }
+</style>
+</head>
+
+<body>
+    <div id="container">
+        <span>Operations </span>
+            <select name="operations" id="mathop">
+            <option value="0">Select Values</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="/">/</option>
+            <option value="*">*</option>
+        </select>
+    </div>
+    <span id="op1"></span>
+    <span id="oper"></span>
+    <span id="op2"></span><br>
+    <button id="numgen" onclick="checker()">Generate Number</button>
+    <label for="numgen" id="msg"></label>
+    <br>
+    <input type="text" id="input">
+    <label for="input" id="msg2"></label><br>
+    <button id="numgen" onclick="compute()">Show result</button>
+    <label for="input" id="msg3"></label>
+    <script>
+     let val11=null
+     let val22=null
+     let val33=null
+        function checker(){
+            let oper= document.getElementById('mathop');
+            if (oper.value !== "0") {
+            let min = 1;
+            let max = 10;
+            let val1 = document.getElementById('op1');
+            val11 = Math.floor(Math.random() * (max - min + 1)) + min;
+            val1.innerHTML=val11
+            op=document.getElementById('oper')
+            op.innerHTML=oper.value;
+            let val2 = document.getElementById('op2');
+            val22=Math.floor(Math.random() * (max - min + 1)) + min;
+            val2.innerHTML=val22
+            let msg= document.getElementById('msg');
+            msg.innerHTML=""
+            }
+            else{
+                let val1 = document.getElementById('op1');
+                val1.innerHTML=""
+                op=document.getElementById('oper')
+                op.innerHTML=""
+                let val2 = document.getElementById('op2');
+               val2.innerHTML=""
+               let msg= document.getElementById('msg');
+               msg.innerHTML="Select value"
+            }
+        }
+        function compute(){
+            let input= document.getElementById('input');
+            if(input.value!==""){
+                let msg2= document.getElementById('msg2');
+                op=document.getElementById('mathop').value;
+                if(op=="+"){
+                    //let val1 = document.getElementById('op1').value;
+                    //let val2 = document.getElementById('op2').value;
+                    val33=val11+val22
+                    msg2.innerHTML= val33;
+                    compare()
+                }
+                if(op==="-"){
+                    //let val1 = document.getElementById('op1').value;
+                    //let val2 = document.getElementById('op2').value;
+                    val33=val11-val22
+                    msg2.innerHTML= val33
+                    compare()
+                }
+                if(op==="*"){
+                    //let val1 = document.getElementById('op1').value;
+                    //let val2 = document.getElementById('op2').value;
+                    val33=val11*val22
+                    msg2.innerHTML= val33
+                    compare()
+                }
+                if(op==="/"){
+                   // let val1 = document.getElementById('op1').value;
+                   // let val2 = document.getElementById('op2').value;
+                    if (val22!==0){
+                        val33=val11/val22
+                        msg2.innerHTML= val33
+                        compare()
+                    }
+                    else{
+                        msg2.innerHTML= "some mistake in divide"
+                    }
+                    
+                }
+                //msg2.innerHTML=input.value
+            }
+            else{
+                let msg2= document.getElementById('msg2');
+                msg2.innerHTML="Enter numneric data";
+            }
+          
+        }
+        function compare(){
+            val44=document.getElementById("input").value
+            let numValue44 = parseInt(val44);
+            let msg3= document.getElementById('msg3');
+            if(numValue44===val33){
+                msg3.innerHTML="Correct Ansewer";
+            }
+            else{
+                msg3.innerHTML="Wrong Answer";
+            }
+            
+          }
+    </script>
+</body>
+</html>
